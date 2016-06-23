@@ -1,5 +1,4 @@
 # DEV
-.env
 .idea
 _ide_helper*.php
 .phpstorm.meta.php
