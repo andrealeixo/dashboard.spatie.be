@@ -1,9 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "prod": "gulp --production",
-    "dev": "gulp watch",
-    "postinstall": "gulp"
+    "start": "node app",
+    "postinstall": "gulp production"
   },
   "dependencies": {
     "chart.js": "^2.1.4",
