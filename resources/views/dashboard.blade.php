@@ -16,12 +16,12 @@
 
     <internet-connection grid="d2"></internet-connection>
 
-    <github-file file-name="freek" grid="a3"></github-file>
+    <github-file file-name="Carindale GF" grid="a3"></github-file>
 
-    <github-file file-name="rogier" grid="b3"></github-file>
+    <github-file file-name="Carindale L1" grid="b3"></github-file>
 
-    <github-file file-name="seb" grid="c3"></github-file>
+    <github-file file-name="Redbank" grid="c3"></github-file>
 
-    <github-file file-name="willem" grid="d3"></github-file>
+    <github-file file-name="Brookside" grid="d3"></github-file>
 
 @endsection
