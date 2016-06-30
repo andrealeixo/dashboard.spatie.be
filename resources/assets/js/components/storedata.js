@@ -9,7 +9,7 @@ export default {
             <section class="store-data">
                 <h1 class="store-data__title">{{ storeName | capitalize }}</h1>
                 <div  class="store-data__content">
-                    {{{ contents }}}
+                    {{{ contents }}}{{ message }}
                 </div>
             </section>
         </grid>
@@ -26,6 +26,7 @@ export default {
     data() {
         return {
             contents: '',
+	    message: 'testing',
         };
     },
 
@@ -33,8 +34,8 @@ export default {
         getEventHandlers() {
             return {
                 'App\\Components\\ATG\\Events\\StoreContentFetched': response => {
-                    this.contents = response.storeContent[this.storeName];
-                    console.log(response);
+                    this.storedatacontents = response.storeContent[this.storeName];
+                    console.log(this.storedatacontents);
                 },
             };
         },

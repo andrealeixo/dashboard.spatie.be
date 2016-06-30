@@ -28,22 +28,17 @@ class FetchStoreContent extends Command
      */
     public function handle()
     {
-      /*  $fileNames = explode(',', env('GITHUB_FILES'));
 
-        $fileContent = collect($fileNames)
-            ->combine($fileNames)
-            ->map(function ($fileName) {
-                return GitHub::repo()->contents()->show('spatie', 'tasks', "{$fileName}.md", 'master');
-            })
-            ->map(function ($fileInfo) {
-                return file_get_contents($fileInfo['download_url']);
-            })
-            ->map(function ($markdownContent) {
-                return markdownToHtml($markdownContent);
+/*	$storeNames = array('Brookside','Carindale GF', 'Carindale L1', 'Redbank', 'Maryborough', 'Hervey Bay', 'Toombul');
+
+        $storeContent = collect($storeNames)
+            ->combine($storeNames)
+            ->map(function ($data) {
+		return "1";
             })
             ->toArray();
 */
-            $storeContent = ["Brookside" => "testing<p>testing3", "Redbank" => "testing 2"] ;
+$storeContent = ['Brookside' => 'Testing', 'Redbank' => 'Testing2'];
         event(new StoreContentFetched($storeContent));
     }
 }
