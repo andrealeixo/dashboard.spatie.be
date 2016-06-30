@@ -32,8 +32,8 @@ export default {
     methods: {
         getEventHandlers() {
             return {
-                'App\\Components\\GitHub\\Events\\FileContentFetched': response => {
-                    this.contents = response.fileContent[this.fileName];
+                'App\\Components\\ATG\\Events\\StoreContentFetched': response => {
+                    this.contents = response.storeContent[this.storeName];
                 },
             };
         },
