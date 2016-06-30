@@ -5,7 +5,7 @@ import SaveState from '../mixins/save-state';
 export default {
 
     template: `
-             <grid :position="grid" modifiers="overflow padded blue">
+             <grid :position="grid" modifiers="overflow padded green">
                 <section class="google-calendar">
                     <h1>Upcoming</h1>
                     <ul class="google-calendar__events">

@@ -4,24 +4,27 @@
 
     @javascript(compact('pusherKey'))
 
-    <google-calendar grid="a1:a2"></google-calendar>
+    <google-calendar grid="a2:a3"></google-calendar>
 
     <last-fm grid="b1:c1"></last-fm>
 
-    <current-time grid="d1" dateformat="ddd DD/MM"></current-time>
+    <current-time grid="a1" dateformat="dddd DD/MM"></current-time>
 
-    <packagist-statistics grid="b2"></packagist-statistics>
 
-    <rain-forecast grid="c2"></rain-forecast>
+    <rain-forecast grid="e2"></rain-forecast>
 
-    <internet-connection grid="d2"></internet-connection>
+    <internet-connection grid="e1"></internet-connection>
 
-    <github-file file-name="Carindale GF" grid="a3"></github-file>
+    <store-data file-name="Carindale GF" grid="b2"></store-data>
 
-    <github-file file-name="Carindale L1" grid="b3"></github-file>
+    <store-data file-name="Carindale L1" grid="c2"></store-data>
 
-    <github-file file-name="Redbank" grid="c3"></github-file>
+    <store-data file-name="Redbank" grid="d2"></store-data>
+    <store-data file-name="Brookside" grid="d1"></store-data>
 
-    <github-file file-name="Brookside" grid="d3"></github-file>
+    <store-data file-name="Toombul" grid="d3"></store-data>
+    <store-data file-name="Hervey Bay" grid="c3"></store-data>
+
+    <store-data file-name="Maryborough" grid="b3"></store-data>
 
 @endsection

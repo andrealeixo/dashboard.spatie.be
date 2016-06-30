@@ -1,3 +1,10 @@
+$grid: (
+    cell-spacing: 1vw,
+    cell-padding: 1vw,
+    cols : 5,
+    rows : 3,
+);
+
 $grid-cols: setting($grid, cols);
 $grid-rows: setting($grid, rows);
 $grid-col-names: (a, b, c, d, e, f, g, h, i, j, k, l); // add more if needed
