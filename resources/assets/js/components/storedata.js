@@ -21,7 +21,7 @@ export default {
 
     mixins: [Pusher, SaveState],
 
-    props: ['fileName', 'grid'],
+    props: ['storeName', 'grid'],
 
     data() {
         return {
