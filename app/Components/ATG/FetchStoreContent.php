@@ -43,7 +43,7 @@ class FetchStoreContent extends Command
             })
             ->toArray();
 */
-            $storeContent = "testing";
+            $storeContent = [$fileName => "testing", $fileInfo => "info", $markdownContent => "<h1>Ok"] ;
         event(new StoreContentFetched($storeContent));
     }
 }
