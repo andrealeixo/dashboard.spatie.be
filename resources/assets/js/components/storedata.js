@@ -6,9 +6,9 @@ export default {
 
     template: `
         <grid :position="grid" modifiers="overflow padded blue">
-            <section class="github-file">
-                <h1 class="github-file__title">{{ fileName | capitalize }}</h1>
-                <div  class="github-file__content">
+            <section class="store-data">
+                <h1 class="store-data__title">{{ storeName | capitalize }}</h1>
+                <div  class="store-data__content">
                     {{{ contents }}}
                 </div>
             </section>
@@ -39,7 +39,7 @@ export default {
         },
 
         getSavedStateId() {
-            return `github-file-${this.fileName}`;
+            return `store-data-${this.storeName}`;
         },
     },
 };

@@ -15,16 +15,16 @@
 
     <internet-connection grid="e1"></internet-connection>
 
-    <store-data file-name="Carindale GF" grid="b2"></store-data>
+    <store-data store-name="Carindale GF" grid="b2"></store-data>
 
-    <store-data file-name="Carindale L1" grid="c2"></store-data>
+    <store-data store-name="Carindale L1" grid="c2"></store-data>
 
-    <store-data file-name="Redbank" grid="d2"></store-data>
-    <store-data file-name="Brookside" grid="d1"></store-data>
+    <store-data store-name="Redbank" grid="d2"></store-data>
+    <store-data store-name="Brookside" grid="d1"></store-data>
 
-    <store-data file-name="Toombul" grid="d3"></store-data>
-    <store-data file-name="Hervey Bay" grid="c3"></store-data>
+    <store-data store-name="Toombul" grid="d3"></store-data>
+    <store-data store-name="Hervey Bay" grid="c3"></store-data>
 
-    <store-data file-name="Maryborough" grid="b3"></store-data>
+    <store-data store-name="Maryborough" grid="b3"></store-data>
 
 @endsection
