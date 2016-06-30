@@ -34,6 +34,7 @@ export default {
             return {
                 'App\\Components\\ATG\\Events\\StoreContentFetched': response => {
                     this.contents = response.storeContent[this.storeName];
+                    console.log(response);
                 },
             };
         },
