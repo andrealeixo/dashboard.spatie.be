@@ -2,6 +2,7 @@ import './helpers/vue-filters';
 import CurrentTime from './components/current-time';
 import GithubFile from './components/github-file';
 import StoreData from './components/storedata';
+import TrelloData from './components/trellodata';
 import GoogleCalendar from './components/google-calendar';
 import InternetConnection from './components/internet-connection';
 import LastFm from './components/last-fm';
@@ -34,6 +35,7 @@ new Vue({
         PackagistStatistics,
         RainForecast,
 	StoreData,
+	TrelloData,
     },
 
 });

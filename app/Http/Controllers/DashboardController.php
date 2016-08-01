@@ -10,4 +10,10 @@ class DashboardController extends Controller
 
         return view('dashboard')->with(compact('pusherKey'));
     }
+    public function indexTrello()
+    {
+        $pusherKey = config('broadcasting.connections.pusher.key');
+
+        return view('dashboard2')->with(compact('pusherKey'));
+    }
 }
