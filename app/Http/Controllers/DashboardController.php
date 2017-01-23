@@ -16,4 +16,10 @@ class DashboardController extends Controller
 
         return view('dashboard2')->with(compact('pusherKey'));
     }
+    public function indexClickpos()
+    {
+        $pusherKey = config('broadcasting.connections.pusher.key');
+
+        return view('dashboard3')->with(compact('pusherKey'));
+    }
 }

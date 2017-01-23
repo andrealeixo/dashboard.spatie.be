@@ -4,13 +4,17 @@
 
         .internet-connection__icon {
             @include background-icon('/svg/internet--down.svg');
-        }
+       	 opacity:1;
+	 background-size:100px;
+	 }
     }
     @include mod('up') {
         background-color: color($green, darker);
 
         .internet-connection__icon {
             @include background-icon('/svg/internet--up.svg');
+	opacity:1;
+	background-size:100px;
         }
     }
 }

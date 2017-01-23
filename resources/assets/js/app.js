@@ -6,6 +6,8 @@ import TrelloData from './components/trellodata';
 import GoogleCalendar from './components/google-calendar';
 import InternetConnection from './components/internet-connection';
 import LastFm from './components/last-fm';
+import TitleBoard from './components/titleboard';
+import PosData from './components/posdata';
 import moment from 'moment';
 import PackagistStatistics from './components/packagist-statistics';
 import RainForecast from './components/rain-forecast';
@@ -36,6 +38,8 @@ new Vue({
         RainForecast,
 	StoreData,
 	TrelloData,
+	TitleBoard,
+	PosData
     },
 
 });

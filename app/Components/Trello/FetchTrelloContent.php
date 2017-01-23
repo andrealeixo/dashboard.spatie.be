@@ -4,6 +4,7 @@ namespace App\Components\Trello;
 
 use App\Components\Trello\Events\TrelloContentFetched;
 use Illuminate\Console\Command;
+use Trello\Client;
 
 class FetchTrelloContent extends Command
 {
@@ -28,167 +29,105 @@ class FetchTrelloContent extends Command
      */
     public function handle()
     {
-//carindale
-/*echo "carindale";
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,"http://atg.thetelstrastore.com.au:4030/mdService1Rest/DataSource/?query=Artlset.Q03142010&dfmt=xml&drowcat=1");
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-curl_setopt($ch,CURLOPT_HEADER, true);
-curl_setopt($ch,CURLOPT_CONNECTTIMEOUT, 240);
-curl_setopt($ch,CURLOPT_TIMEOUT, 240);
-
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Authorization:SharperLight:UH=1CB3A37F9DCC2C6E8CFF1AFA6C3EF06D0857871FBAB2C721C995EFD377A300A5 '
-        ));
-    $response=curl_exec($ch);
-$curl_errno = curl_errno($ch);
-
-$header_size = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
-$body = substr( $response, $header_size );
-    curl_close($ch);
-
-if ($curl_errno > 0) {
-	echo "timeout error";
-	die();
-}
-$utf = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $body);
-$xml=@simplexml_load_string($utf) or die("Error: Cannot create object");
-$this->parseInputs($xml);
-echo "brookside";
-//brookside
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,"http://atgsys.cloudapp.net/BRKSRest/DataSource/?query=Q30135937&dfmt=xml&dtotals=0");
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-curl_setopt($ch,CURLOPT_HEADER, true);
-curl_setopt($ch,CURLOPT_CONNECTTIMEOUT, 240);
-curl_setopt($ch,CURLOPT_TIMEOUT, 240);
-
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Authorization:SharperLight:UH=c0e555d4cab8878d57b9549dfb68b5e681a6ecb8afd9506ab91be32d7f2940e0'
-        ));
-    $response=curl_exec($ch);
-$header_size = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
-$body = substr( $response, $header_size );
 
 
-    curl_close($ch);
-if ($curl_errno > 0) {
-	echo "timeout error";
-	die();
-}
-$utf = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $body);
-$xml=@simplexml_load_string($utf) or die("Error: Cannot create object");
-$this->parseInputs($xml);
-echo "maryborough";
-//maryborough group
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,"http://atgsys.cloudapp.net/MRBRRest/DataSource/?query=Q30144542&dfmt=xml&dtotals=0");
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-curl_setopt($ch,CURLOPT_HEADER, true);
-curl_setopt($ch,CURLOPT_CONNECTTIMEOUT, 240);
-curl_setopt($ch,CURLOPT_TIMEOUT, 240);
 
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Authorization:SharperLight:UH=c0e555d4cab8878d57b9549dfb68b5e681a6ecb8afd9506ab91be32d7f2940e0'
-        ));
-    $response=curl_exec($ch);
-$header_size = curl_getinfo($ch,CURLINFO_HEADER_SIZE);
-$body = substr( $response, $header_size );
-
-
-    curl_close($ch);
-if ($curl_errno > 0) {
-	echo "timeout error";
-	die();
-}
-$utf = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $body);
-$xml=@simplexml_load_string($utf) or die("Error: Cannot create object");
-$this->parseInputs($xml);
-
+$this->parseLists('Carindale GF');
+$this->parseLists('Carindale L1');
+$this->parseLists('Redbank');
+$this->parseLists('Toombul');
+$this->parseLists('Brookside');
+$this->parseLists('Maryborough');
+$this->parseLists('Hervey Bay');
 
 $this->postInputs();
 
-*/
-
-
-
-
-// Setup Inputs
-  /*      $storeNames = ['Brookside', 'Carindale GF', 'Carindale L1', 'Redbank', 'Maryborough', 'Hervey Bay', 'Toombul'];
-
-        $storeContent = collect($storeNames)
-            ->combine($storeNames)
-            ->map(function ($storeName) {
-		return "1";
-            })
-            ->toArray(); */
-    }
-
-public function parseInputs($xml) {
-
-foreach ($xml->Rows->Row as $item) {
-        $name = (string)$item->Cell[0];
-
-
-
-switch ($name) {
-   case "TLS Ground Level":
-        $name = "Carindale GF";
-        break;
-    case "TLS Level 1":
-        $name = "Carindale L1";
-        break;
-    case "TLS Redbank":
-        $name = "Redbank";
-        break;
-    case "Brookside Telstra Store";
-	$name = "Brookside";
-	break;
-    case "Maryborough";
-	$name = "Maryborough";
-	break;
-    case "TLS Hervey Bay";
-	$name = "Hervey Bay";
-	break;
-    case "TLS Toombul";
-	$name = "Toombul";
-	break;
 }
 
-        $ppn = (string)$item->Cell[1];
-        $busppn = (string)$item->Cell[2];
-        $ppr = (string)$item->Cell[3];
-        $prepaid = (string)$item->Cell[4];
-        $wbb = (string)$item->Cell[5];
-        $datashare = (string)$item->Cell[6];
-        $bundles = (string)$item->Cell[7];
-        $nbn = (string)$item->Cell[8];
-        $foxtel = (string)$item->Cell[9];
-        $tv = (string)$item->Cell[10];
-        $siebelbus = (string)$item->Cell[11];
-//postData($ppn, $busppn, $ppr, $prepaid, $wbb, $datashare, $bundles, $nbn, $foxtel, $tv, $name, $siebelbus);
-$_SESSION['storeContent'][$name] = "PPN: " . (string)$ppn . '<br/>'
-. "BusPPN: " . (string)$busppn . '<br/>'
-. "SiebelBus: " . (string)$siebelbus . '<br/>'
-. "PPR: " . (string)$ppr . '<br/>'
-. "Prepaid: " . (string)$prepaid . '<br/>'
-. "WBB: " . (string)$wbb . '<br/>'
-. "Bundles: " . (string)$bundles . '<br/>'
-. "NBN: " . (string)$nbn . '<br/>'
-. "Foxtel: " . (string)$foxtel . '<br/>'
-. "Telstra TV: " . (string)$tv;
-
-
-
-}
-
-}
 
 
 public function postInputs() {
-/*
+
 event(new TrelloContentFetched($_SESSION['trelloContent']));
-*/
+
+
+}
+
+
+public function parseLists($name) {
+
+$client = new Client();
+$client->authenticate(getenv('TRELLO_KEY'),getenv('TRELLO_TOKEN'),Client::AUTH_URL_CLIENT_ID);
+
+
+switch($name) {
+	case "Carindale GF":
+	$pending = $client->lists()->cards()->all('578c83347afbd14dfa179f14');
+	$pending2 = $client->lists()->cards()->all('57ad39d1bf28a24173d710fc');
+	$cancelled = $client->lists()->cards()->all('57ad3b4d41135618537ce0c2');
+	$provisioning = $client->lists()->cards()->all('578c8342defae3b874abfc2e');
+	$followup = $client->lists()->cards()->all('578c833f1d87a1370c92a502');
+	$this->setResults('Carindale GF', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+	case "Carindale L1":
+	$pending = $client->lists()->cards()->all('578c8316c1d52b93713e7c2c');
+	$pending2 = $client->lists()->cards()->all('57ad3bdf51c7ad666a5d3b12');
+	$cancelled = $client->lists()->cards()->all('57ad3be37c63e2f621895a98');
+	$provisioning = $client->lists()->cards()->all('578c83209d93e42774ba17ce');
+	$followup = $client->lists()->cards()->all('578c831e3b541f91b5bb8ec9');
+	$this->setResults('Carindale L1', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+	case "Redbank":
+	$pending = $client->lists()->cards()->all('578c82f6f6cb9df5ef9f6f16');
+	$pending2 = $client->lists()->cards()->all('57ad3d89e8d6572d516fc311');
+	$cancelled = $client->lists()->cards()->all('578c8309f40ab57b69b09d36');
+	$provisioning = $client->lists()->cards()->all('578c8302ad489cec310d5ef9');
+	$followup = $client->lists()->cards()->all('57a8161e62606b640a8adef4');
+	$this->setResults('Redbank', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+	case "Brookside":
+	$pending = $client->lists()->cards()->all('55c96384390e1b9426d40c52');
+	$pending2 = $client->lists()->cards()->all('57ad3b386ea3ac470505fc2e');
+	$cancelled = $client->lists()->cards()->all('57a29b21690b3f76034bbd97');
+	$provisioning = $client->lists()->cards()->all('57a29b0bdd585779b8bab60c');
+	$followup = $client->lists()->cards()->all('57a816940ec13eea66cb86b3');
+	$this->setResults('Brookside', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+	case "Hervey Bay":
+	$pending = $client->lists()->cards()->all('57a291652e3c4d4c69c772a8');
+	$provisioning = $client->lists()->cards()->all('57a291652e3c4d4c69c772a9');
+	$pending2 = $client->lists()->cards()->all('57ad39e1f833897d69411e67');
+	$cancelled = $client->lists()->cards()->all('57ad3a7f0194367ad432ec5f');
+	$followup = $client->lists()->cards()->all('57a816efe67486a513c65200');
+	$this->setResults('Hervey Bay', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+	case "Toombul":
+	$pending = $client->lists()->cards()->all('57a291dcc535e947bbd33e84');
+	$provisioning = $client->lists()->cards()->all('57a291dcc535e947bbd33e85');
+	$pending2 = $client->lists()->cards()->all('57ad3a01a95904b4375bf65b');
+	$cancelled = $client->lists()->cards()->all('57ad3626656bca2a93900d09');
+	$followup = $client->lists()->cards()->all('57a817d8eed86be10e9ae7b3');
+	$this->setResults('Toombul', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+	case "Maryborough":
+	$pending = $client->lists()->cards()->all('57a28e62317685efcbc079fe');
+	$provisioning = $client->lists()->cards()->all('57a28e6863a634f3d008c815');
+	$pending2 = $client->lists()->cards()->all('57ad3a46f48c2ae277a37e0d');
+	$cancelled = $client->lists()->cards()->all('57ad491b1af8868e1d0381c4');
+	$followup = $client->lists()->cards()->all('57a8183aa3dd1bd30d86b4e9');
+	$this->setResults('Maryborough', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+}
+
+}
+
+public function setResults() {
+	$args = func_get_args();
+	$_SESSION['trelloContent'][$args[0]] = "Invoiced: " . $args[1] . '<br/>' .
+	"Pending: " . $args[4] . '<br/>' .
+	"Provisioning: " . $args[2] . '<br/>' . "Followup: " . $args[3] . '<br/>' .
+	"Cancelled: " . $args[5];
+	
 
 }
 

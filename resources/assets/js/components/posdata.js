@@ -6,9 +6,9 @@ export default {
 
     template: `
         <grid :position="grid" modifiers="overflow padded blue">
-            <section class="trello-data">
-                <h1 class="trello-data__title">{{ storeName | capitalize }}</h1>
-                <div  class="trello-data__content">
+            <section class="pos-data">
+                <h1 class="pos-data__title">{{ storeName | capitalize }}</h1>
+                <div  class="pos-data__content">
                     {{{ contents }}}
                 </div>
             </section>
@@ -32,15 +32,15 @@ export default {
     methods: {
         getEventHandlers() {
             return {
-                'App\\Components\\Trello\\Events\\TrelloContentFetched': response => {
-                    this.contents = response.trelloContent[this.storeName];
+                'BatchingList': response => {
+                    this.contents = response[this.storeName];
                     console.log(response);
                 },
             };
         },
 
         getSavedStateId() {
-            return `trello-data-${this.storeName}`;
+            return `pos-data-${this.storeName}`;
         },
     },
 };

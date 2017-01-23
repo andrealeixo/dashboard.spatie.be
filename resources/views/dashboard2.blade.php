@@ -4,27 +4,27 @@
 
     @javascript(compact('pusherKey'))
 
-    <google-calendar grid="a2:a3"></google-calendar>
+   <!-- <google-calendar grid="a2:a3"></google-calendar> -->
 
-    <last-fm grid="b1:c1"></last-fm>
+  <!--  <last-fm grid="b1:c1"></last-fm> -->
 
-    <current-time grid="a1" dateformat="dddd DD/MM"></current-time>
+    <current-time grid="a1:b2" dateformat="dddd DD/MM"></current-time>
 
 
-    <rain-forecast grid="e2"></rain-forecast>
+  <!--  <rain-forecast grid="e2"></rain-forecast> -->
 
-    <internet-connection grid="e1"></internet-connection>
+   <!-- <internet-connection grid="e1"></internet-connection> -->
 
-    <trello-data store-name="Carindale GF" grid="b2"></trello-data>
+    <trello-data store-name="Carindale GF" grid="c1:d2"></trello-data>
 
-    <trello-data store-name="Carindale L1" grid="c2"></trello-data>
+    <trello-data store-name="Carindale L1" grid="e1:f2"></trello-data>
 
-    <trello-data store-name="Redbank" grid="d2"></trello-data>
-    <trello-data store-name="Brookside" grid="d1"></trello-data>
+    <trello-data store-name="Redbank" grid="g1:h2"></trello-data>
+    <trello-data store-name="Brookside" grid="g3:h4"></trello-data>
 
-    <trello-data store-name="Toombul" grid="d3"></trello-data>
-    <trello-data store-name="Hervey Bay" grid="c3"></trello-data>
+    <trello-data store-name="Toombul" grid="e3:f4"></trello-data>
+    <trello-data store-name="Hervey Bay" grid="c3:d4"></trello-data>
 
-    <trello-data store-name="Maryborough" grid="b3"></trello-data>
+    <trello-data store-name="Maryborough" grid="a3:b4"></trello-data>
 
 @endsection

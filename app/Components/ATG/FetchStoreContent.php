@@ -28,10 +28,11 @@ class FetchStoreContent extends Command
      */
     public function handle()
     {
+date_default_timezone_set('Australia/Brisbane');
 //carindale
 echo "carindale";
 $ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,"http://atg.thetelstrastore.com.au:4030/mdService1Rest/DataSource/?query=Artlset.Q03142010&dfmt=xml&drowcat=1");
+curl_setopt($ch,CURLOPT_URL,"http://13.73.107.108:4030/mdService1Rest/DataSource/?query=Artlset.Q15100900&dfmt=xml&drowcat=1");
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 curl_setopt($ch,CURLOPT_HEADER, true);
 curl_setopt($ch,CURLOPT_CONNECTTIMEOUT, 240);
@@ -57,7 +58,7 @@ $this->parseInputs($xml);
 echo "brookside";
 //brookside
 $ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,"http://atgsys.cloudapp.net/BRKSRest/DataSource/?query=Q30135937&dfmt=xml&dtotals=0");
+curl_setopt($ch,CURLOPT_URL,"http://atgsys.cloudapp.net/BRKSRest/DataSource/?query=Q15105243&dfmt=xml&dtotals=0");
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 curl_setopt($ch,CURLOPT_HEADER, true);
 curl_setopt($ch,CURLOPT_CONNECTTIMEOUT, 240);
@@ -82,7 +83,7 @@ $this->parseInputs($xml);
 echo "maryborough";
 //maryborough group
 $ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,"http://atgsys.cloudapp.net/MRBRRest/DataSource/?query=Q30144542&dfmt=xml&dtotals=0");
+curl_setopt($ch,CURLOPT_URL,"http://atgsys.cloudapp.net/MRBRRest/DataSource/?query=Q15104957&dfmt=xml&dtotals=0");
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 curl_setopt($ch,CURLOPT_HEADER, true);
 curl_setopt($ch,CURLOPT_CONNECTTIMEOUT, 240);
@@ -126,6 +127,16 @@ $this->postInputs();
 
 public function parseInputs($xml) {
 
+date_default_timezone_set("Australia/Brisbane");
+
+$datetime1 = time();
+$datetime2 = strtotime("2016-08-27");
+$datetime3 = strtotime("2016-07-30");
+$datediff = $datetime2 - $datetime1;
+$daysLeft = floor($datediff/(60*60*24));
+$datediff = $datetime1 - $datetime3;
+$daysTo = floor($datediff/(60*60*24));
+
 foreach ($xml->Rows->Row as $item) {
         $name = (string)$item->Cell[0];
 
@@ -134,49 +145,48 @@ foreach ($xml->Rows->Row as $item) {
 switch ($name) {
    case "TLS Ground Level":
         $name = "Carindale GF";
+	$storeTarget = 104;
+	$sprintTarget = 127;
         break;
     case "TLS Level 1":
         $name = "Carindale L1";
+	$storeTarget = 58;
+	$sprintTarget = 72;
         break;
     case "TLS Redbank":
         $name = "Redbank";
+	$storeTarget = 45;
+	$sprintTarget = 55;
         break;
     case "Brookside Telstra Store";
 	$name = "Brookside";
+	$storeTarget = 96;
+	$sprintTarget = 118;
 	break;
     case "Maryborough";
 	$name = "Maryborough";
+	$storeTarget = 1;
+	$sprintTarget = 1;
 	break;
     case "TLS Hervey Bay";
 	$name = "Hervey Bay";
+	$storeTarget = 129;
+	$sprintTarget = 158;
+
 	break;
     case "TLS Toombul";
 	$name = "Toombul";
+	$storeTarget = 118;
+	$sprintTarget = 145;
+
 	break;
 }
 
         $ppn = (string)$item->Cell[1];
-        $busppn = (string)$item->Cell[2];
-        $ppr = (string)$item->Cell[3];
-        $prepaid = (string)$item->Cell[4];
-        $wbb = (string)$item->Cell[5];
-        $datashare = (string)$item->Cell[6];
-        $bundles = (string)$item->Cell[7];
-        $nbn = (string)$item->Cell[8];
-        $foxtel = (string)$item->Cell[9];
-        $tv = (string)$item->Cell[10];
-        $siebelbus = (string)$item->Cell[11];
-//postData($ppn, $busppn, $ppr, $prepaid, $wbb, $datashare, $bundles, $nbn, $foxtel, $tv, $name, $siebelbus);
-$_SESSION['storeContent'][$name] = "PPN: " . (string)$ppn . '<br/>'
-. "BusPPN: " . (string)$busppn . '<br/>'
-. "SiebelBus: " . (string)$siebelbus . '<br/>'
-. "PPR: " . (string)$ppr . '<br/>'
-. "Prepaid: " . (string)$prepaid . '<br/>'
-. "WBB: " . (string)$wbb . '<br/>'
-. "Bundles: " . (string)$bundles . '<br/>'
-. "NBN: " . (string)$nbn . '<br/>'
-. "Foxtel: " . (string)$foxtel . '<br/>'
-. "Telstra TV: " . (string)$tv;
+$_SESSION['storeContent'][$name] = "Store Target: " . $storeTarget . '<br/>'
+. "Sprint Target: " . $sprintTarget . '<br/>'
+ . "Sprint To Date: " . (string)$ppn . '<br/>'
+. "Sprint Runrate: " . (string)round(($ppn/ $daysTo)* 28);
 
 
 

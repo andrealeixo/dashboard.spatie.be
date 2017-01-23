@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
         \App\Components\InternetConnectionStatus\SendHeartbeat::class,
         \App\Components\RainForecast\FetchRainForecast::class,
         \App\Components\Trello\FetchTrelloContent::class,
+        \App\Components\ATG\FetchStoreContent::class,
     ];
 
     /**
@@ -33,6 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('dashboard:calendar')->everyFiveMinutes();
         $schedule->command('dashboard:github')->everyFiveMinutes();
         $schedule->command('dashboard:trello')->everyMinute();
+        $schedule->command('dashboard:atg')->everyTenMinutes();
         $schedule->command('dashboard:heartbeat')->everyMinute();
         $schedule->command('dashboard:packagist')->hourly();
         $schedule->command('dashboard:rain')->everyMinute();

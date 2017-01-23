@@ -3,28 +3,18 @@
 @section('content')
 
     @javascript(compact('pusherKey'))
+  <current-time grid="a1:b1" dateformat="dddd DD/MM"></current-time>
+    <title-board grid="a2:b2"></title-board>
+    <store-data store-name="Carindale GF" grid="c1:d2"></store-data>
 
-    <google-calendar grid="a2:a3"></google-calendar>
+    <store-data store-name="Carindale L1" grid="e1:f2"></store-data>
 
-    <last-fm grid="b1:c1"></last-fm>
+    <store-data store-name="Redbank" grid="g1:h2"></store-data>
+    <store-data store-name="Brookside" grid="g3:h4"></store-data>
 
-    <current-time grid="a1" dateformat="dddd DD/MM"></current-time>
+    <store-data store-name="Toombul" grid="e3:f4"></store-data>
+    <store-data store-name="Hervey Bay" grid="c3:d4"></store-data>
 
-
-    <rain-forecast grid="e2"></rain-forecast>
-
-    <internet-connection grid="e1"></internet-connection>
-
-    <store-data store-name="Carindale GF" grid="b2"></store-data>
-
-    <store-data store-name="Carindale L1" grid="c2"></store-data>
-
-    <store-data store-name="Redbank" grid="d2"></store-data>
-    <store-data store-name="Brookside" grid="d1"></store-data>
-
-    <store-data store-name="Toombul" grid="d3"></store-data>
-    <store-data store-name="Hervey Bay" grid="c3"></store-data>
-
-    <store-data store-name="Maryborough" grid="b3"></store-data>
+    <store-data store-name="Maryborough" grid="a3:b4"></store-data>
 
 @endsection

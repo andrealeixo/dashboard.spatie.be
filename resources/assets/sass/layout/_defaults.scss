@@ -24,6 +24,12 @@ html {
 ul {
     list-style: none;
 }
+.trello-data {
+font-size:40px;
+}
+.store-data {
+font-size:50px;
+}
 
 h1 {
     @include font-sans-light;
