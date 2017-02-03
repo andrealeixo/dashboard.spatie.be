@@ -8,7 +8,12 @@
 
   <!--  <last-fm grid="b1:c1"></last-fm> -->
 
-    <current-time grid="a1:b2" dateformat="dddd DD/MM"></current-time>
+
+
+
+  <current-time grid="a1:b1" dateformat="dddd DD/MM"></current-time>
+    <internet-connection grid="a2:b2"></internet-connection>
+
 
 
   <!--  <rain-forecast grid="e2"></rain-forecast> -->

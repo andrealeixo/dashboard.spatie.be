@@ -1,7 +1,6 @@
 <?php
 
 
-    Route::get('/clickpos', 'DashboardController@indexClickpos');
 
 
 Route::group(['middleware' => 'auth.very_basic'], function () {
@@ -17,3 +16,4 @@ Route::post('/webhook/github', 'GitHubWebhookController@gitRepoReceivedPush');
 Route::get('/testing', function() {
 	return 'testing';
 });
+    Route::get('/clickpos', 'ClickposController@indexClickpos');
