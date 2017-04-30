@@ -11,8 +11,6 @@
 
 
 
-  <current-time grid="a1:b1" dateformat="dddd DD/MM"></current-time>
-    <internet-connection grid="a2:b2"></internet-connection>
 
 
 
@@ -25,11 +23,12 @@
     <trello-data store-name="Carindale L1" grid="e1:f2"></trello-data>
 
     <trello-data store-name="Redbank" grid="g1:h2"></trello-data>
-    <trello-data store-name="Brookside" grid="g3:h4"></trello-data>
+    <trello-data store-name="Brookside" grid="a1:b2"></trello-data>
+    <trello-data store-name="Maryborough" grid="g3:h4"></trello-data>
 
     <trello-data store-name="Toombul" grid="e3:f4"></trello-data>
     <trello-data store-name="Hervey Bay" grid="c3:d4"></trello-data>
 
-    <trello-data store-name="Maryborough" grid="a3:b4"></trello-data>
+    <trello-data store-name="Toowong" grid="a3:b4"></trello-data>
 
 @endsection

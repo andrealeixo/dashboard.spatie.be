@@ -39,6 +39,7 @@ $this->parseLists('Toombul');
 $this->parseLists('Brookside');
 $this->parseLists('Maryborough');
 $this->parseLists('Hervey Bay');
+$this->parseLists('Toowong');
 
 $this->postInputs();
 
@@ -116,6 +117,14 @@ switch($name) {
 	$cancelled = $client->lists()->cards()->all('57ad491b1af8868e1d0381c4');
 	$followup = $client->lists()->cards()->all('57a8183aa3dd1bd30d86b4e9');
 	$this->setResults('Maryborough', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
+	break;
+	case "Toowong":
+	$pending = $client->lists()->cards()->all('58aea7388ecbf74c9ef13751');
+	$provisioning = $client->lists()->cards()->all('58aea7388ecbf74c9ef13752');
+	$pending2 = $client->lists()->cards()->all('58aea7388ecbf74c9ef13753');
+	$cancelled = $client->lists()->cards()->all('58aea7388ecbf74c9ef13757');
+	$followup = $client->lists()->cards()->all('58aea7388ecbf74c9ef13755');
+	$this->setResults('Toowong', count($pending), count($provisioning), count($followup), count($pending2), count($cancelled));	
 	break;
 }
 
