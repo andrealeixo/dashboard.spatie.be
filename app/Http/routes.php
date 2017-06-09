@@ -5,6 +5,7 @@
 
 Route::group(['middleware' => 'auth.very_basic'], function () {
     Route::get('/', 'DashboardController@index');
+    Route::get('/clickpos', 'ClickposController@indexClickpos');
     Route::get('/trello', 'DashboardController@indexTrello');
 
     Route::post('/pusher/authenticate', 'PusherController@authenticate');
@@ -16,4 +17,3 @@ Route::post('/webhook/github', 'GitHubWebhookController@gitRepoReceivedPush');
 Route::get('/testing', function() {
 	return 'testing';
 });
-    Route::get('/clickpos', 'ClickposController@indexClickpos');
